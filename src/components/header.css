@@ -1,0 +1,24 @@
+.header-continer{
+    width: 100%;
+    height:4rem;
+    background-color:#603F83FF;
+    border-bottom:0.5rem solid #C7D3D4FF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: aliceblue;
+    font-size:1.5rem;
+}
+.nav-link{
+    color:white;
+    font-weight: 200;
+}
+.nav-link:hover{
+    color:rgb(134, 241, 193);
+    margin-top: 2px;
+    border-bottom: 2px solid white;
+}
+
+.nav-link:clicked{
+    color:#ADEFD1FF;
+}
