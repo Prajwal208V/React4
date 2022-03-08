@@ -6,11 +6,11 @@ import './student.css';
 function Students() {
   const navigate = useNavigate();
   const { student, control } = useContext(StudentContext);
-  const [students] = student;
-  const [setControler] = control;
-  console.log(students);
-
+  const [students,setStudents] = student;
+  const [controler,setControler] = control;
   const clickEvent = (ind) => {
+    console.log(controler);
+    console.log(setStudents);
     setControler({ indexer: ind, controler: false });
     navigate(`/students-AddDec/${ind}`)
   }
