@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { BrowserRouter as Router } from 'react-router-dom';
+import { StudentProvider } from './components/StudentContext';
 
 import Navigator from './components/Navigator';
 import './index.css';
@@ -7,9 +7,11 @@ import './index.css';
 class App extends Component {
     render() {
         return (
-
-            <Navigator />
-
+            <>
+                <StudentProvider>
+                    <Navigator />
+                </StudentProvider>
+            </>
         )
     }
 }

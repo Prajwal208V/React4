@@ -1,34 +1,58 @@
-import React, { Component } from 'react';
-import TableComponent from './Table';
+import React, { useContext } from 'react';
+import {  useNavigate } from 'react-router-dom';
+import { StudentContext } from './StudentContext';
 import './student.css';
 
-class Students extends Component {
-  header = {
-    name: 'Name', age: 'Age', course: 'Course', Batch: 'Batch', Change: 'Change',
+function Students() {
+  const navigate = useNavigate();
+  const { student, control } = useContext(StudentContext);
+  const [students] = student;
+  const [setControler] = control;
+  console.log(students);
+
+  const clickEvent = (ind) => {
+    setControler({ indexer: ind, controler: false });
+    navigate(`/students-AddDec/${ind}`)
   }
-  studentArr = [{ name: '	Liam', age: 24, course: 'MERN', Batch: 'October', Change: "link" },
-  { name: 'James', age: 23, course: 'MEEN', Batch: 'October', Change: "link" },
-  { name: 'Noah', age: 25, course: 'MERN', Batch: 'October', Change: "link" },
-  { name: 'William', age: 23, course: 'MEAN', Batch: 'October', Change: "link" },
-  { name: 'Lucas', age: 24, course: 'MERN', Batch: 'October', Change: "link" },];
-  render() {
-    return (
-      <div>
-        <div className="title-box">
-          <h1 className="title">Students Details</h1>
-          <button className="addBtn">ADD STUDENT</button>
-        </div>
-        <div className="table-continer">
-          <TableComponent studentList={this.header} />
-          <TableComponent studentList={this.studentArr[0]} />
-          <TableComponent studentList={this.studentArr[1]} />
-          <TableComponent studentList={this.studentArr[2]} />
-          <TableComponent studentList={this.studentArr[3]} />
-          <TableComponent studentList={this.studentArr[4]} />
+  const AddClickEvent=()=>{
+    setControler({ indexer:0, controler: true });
+    navigate('/students-AddDec');
+  }
+   
+  return (
+    <div className="list-continer">
+      <div className="title-box">
+        <h1 className="title">Students Details</h1>
+        <div>
+          <button  onClick={AddClickEvent} className="addBtn">ADD STUDENT <i className="fa fa-plus-circle plusIcon" /></button>
         </div>
       </div>
-    )
-  }
+      <div className="table-continer">
+        <div className="rows-box">
+          <div className="columns table-header">Name</div>
+          <div className="columns table-header">Age</div>
+          <div className="columns table-header">Course</div>
+          <div className="columns table-header">Batch</div>
+          <div className="columns table-header">Change</div>
+        </div>
+        <>{
+          students.map((student, index) => {
+            return (
+              <div key={index.toString()} className="rows-box">
+                <div className="columns">{student.name}</div>
+                <div className="columns">{student.age}</div>
+                <div className="columns">{student.course}</div>
+                <div className="columns">{student.batch}</div>
+                <div className="columns">
+                  <button  className="change-btn" onClick={(() => clickEvent(index))}>Edit <span><i className="fa fas fa-edit"></i></span></button>
+                </div>
+              </div>
+            )
+          })
+        }</>
+      </div>
+    </div>
+  )
 }
 
 export default Students;
