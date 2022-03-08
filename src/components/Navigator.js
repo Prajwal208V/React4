@@ -1,5 +1,5 @@
 import React, {useContext } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './header';
 import Home from './home';
 import Students from './students';
@@ -14,7 +14,6 @@ function Navigator() {
             <Router>
                     <Header />
                     <Routes>
-                        {/* <Route path='/' element={<Navigate to='/home' />} /> */}
                         <Route path='/home' element={<Home />}></Route>
                         <Route path='/Students' element={<Students />} />
                         <Route path='/Contacts' element={<Contacts />}></Route>
