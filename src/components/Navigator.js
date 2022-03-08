@@ -14,7 +14,7 @@ function Navigator() {
             <Router>
                     <Header />
                     <Routes>
-                        <Route path='/' element={<Navigate to='/home' />} />
+                        {/* <Route path='/' element={<Navigate to='/home' />} /> */}
                         <Route path='/home' element={<Home />}></Route>
                         <Route path='/Students' element={<Students />} />
                         <Route path='/Contacts' element={<Contacts />}></Route>
